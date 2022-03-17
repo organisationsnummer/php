@@ -1,0 +1,25 @@
+{
+    "name": "organisationsnummer/organisationsnummer",
+    "require": {
+        "php": ">=7.4",
+        "personnummer/personnummer": ">=v3.0.4"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest",
+        "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": ">=3.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Organisationsnummer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Organisationsnummer\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit --configuration ./phpunit.xml.dist --log-junit report.xml --colors=never --coverage-text"
+    }
+}
