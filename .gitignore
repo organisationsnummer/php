@@ -1,0 +1,4 @@
+.phpunit.result.cache
+report.xml
+vendor
+.idea
