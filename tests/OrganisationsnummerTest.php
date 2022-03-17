@@ -5,8 +5,8 @@ namespace Organisationsnummer\Tests;
 use Organisationsnummer\Organisationsnummer;
 use PHPUnit\Framework\TestCase;
 
-class OrganisationsnummerTest extends TestCase {
-
+class OrganisationsnummerTest extends TestCase
+{
     /**
      * @testWith ["556016-0680", true]
      *           ["556103-4249", true]
@@ -27,7 +27,7 @@ class OrganisationsnummerTest extends TestCase {
      *           ["901211-9948", "9012119948"]
      *           ["9012119948", "9012119948"]
      */
-    public function testFormatWithOutSeparator(string $input, string $expected) : void
+    public function testFormatWithOutSeparator(string $input, string $expected): void
     {
         self::assertEquals($expected, Organisationsnummer::parse($input)->format(false));
     }
