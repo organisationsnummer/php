@@ -1,12 +1,14 @@
 <?php
+
 namespace Organisationsnummer;
 
 use Exception;
 use Personnummer\Personnummer;
 use Personnummer\PersonnummerException;
 
-class Organisationsnummer {
-    private const FirmaTypes = [
+class Organisationsnummer
+{
+    private const FIRMA_TYPES = [
         // String to map different company types.
         // Will only pick 0-9, but we use 10 to be EF as we want it constant.
         'Okänt', // 0
@@ -22,11 +24,12 @@ class Organisationsnummer {
         'Enskild firma', // 10
     ];
 
-    private const Regex = '/^(\d{2}){0,1}(\d{2})(\d{2})(\d{2})([-+]?)?((?!000)\d{3})(\d)$/';
+    private const REGEX = '/^(\d{2}){0,1}(\d{2})(\d{2})(\d{2})([-+]?)?((?!000)\d{3})(\d)$/';
 
     //region static
 
-    private static function luhnCheck(string $value): bool {
+    private static function luhnCheck(string $value): bool
+    {
         $sum = 0;
         $len = strlen($value);
         for ($i = 0; $i < $len; $i++) {
@@ -50,7 +53,8 @@ class Organisationsnummer {
      * @return Organisationsnummer Organisationsnummer as an object
      * @throws OrganisationsnummerException On Parse Error.
      */
-    public static function parse(string $input): Organisationsnummer {
+    public static function parse(string $input): Organisationsnummer
+    {
         return new Organisationsnummer($input);
     }
 
@@ -60,7 +64,8 @@ class Organisationsnummer {
      * @param string $input Organisationsnummer as string to validate.
      * @return bool True on valid Organisationsnummer.
      */
-    public static function valid(string $input): bool {
+    public static function valid(string $input): bool
+    {
         try {
             self::parse($input);
             return true;
@@ -80,7 +85,8 @@ class Organisationsnummer {
      * @param string $input Organisationsnummer as string to base the object on.
      * @throws OrganisationsnummerException On parse error.
      */
-    public function __construct(string $input) {
+    public function __construct(string $input)
+    {
         $this->innerParse($input);
     }
 
@@ -89,7 +95,8 @@ class Organisationsnummer {
      *
      * @return string
      */
-    public function vatNumber(): string {
+    public function vatNumber(): string
+    {
         return sprintf('SE%s01', $this->getShortString());
     }
 
@@ -99,7 +106,8 @@ class Organisationsnummer {
      * @param bool $separator If to include separator (-) or not.
      * @return string
      */
-    public function format(bool $separator = true): string {
+    public function format(bool $separator = true): string
+    {
         $number = $this->getShortString();
         return $separator ? sprintf('%s-%s', substr($number, 0, 6), substr($number, 6)) : $number;
     }
@@ -109,7 +117,8 @@ class Organisationsnummer {
      *
      * @return bool
      */
-    public function isPersonnummer(): bool {
+    public function isPersonnummer(): bool
+    {
         return $this->innerPersonnummer !== null;
     }
 
@@ -118,7 +127,8 @@ class Organisationsnummer {
      *
      * @return Personnummer|null
      */
-    public function personnummer(): ?Personnummer {
+    public function personnummer(): ?Personnummer
+    {
         return $this->innerPersonnummer;
     }
 
@@ -127,16 +137,18 @@ class Organisationsnummer {
      *
      * @return string
      */
-    public function type(): string {
-        return $this->isPersonnummer() ? self::FirmaTypes[10] : self::FirmaTypes[(int)$this->number[0]];
+    public function type(): string
+    {
+        return $this->isPersonnummer() ? self::FIRMA_TYPES[10] : self::FIRMA_TYPES[(int)$this->number[0]];
     }
 
     //region Private
 
-    private function innerParse(string $input): void {
+    private function innerParse(string $input): void
+    {
         try {
             $matches = [];
-            preg_match(self::Regex, $input, $matches);
+            preg_match(self::REGEX, $input, $matches);
 
             if (empty($matches)) {
                 throw new OrganisationsnummerException();
@@ -146,7 +158,7 @@ class Organisationsnummer {
                 throw new OrganisationsnummerException();
             }
 
-            $input = str_replace(['+', '-'],  ['', ''], $input);
+            $input = str_replace(['+', '-'], ['', ''], $input);
             if ((int)$matches[3] < 20 || (int)$matches[2] < 10 || !self::luhnCheck($input)) {
                 throw new OrganisationsnummerException();
             }
@@ -161,11 +173,11 @@ class Organisationsnummer {
         }
     }
 
-    private function getShortString(): string {
+    private function getShortString(): string
+    {
         $asString = $this->isPersonnummer() ? $this->innerPersonnummer->format(false) : $this->number;
-        return str_replace(['+', '-'],  ['', ''], $asString);
+        return str_replace(['+', '-'], ['', ''], $asString);
     }
 
     //endregion
-
 }
