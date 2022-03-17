@@ -20,6 +20,11 @@
         }
     },
     "scripts": {
-        "test": "phpunit --configuration ./phpunit.xml.dist --log-junit report.xml --colors=never --coverage-text"
+        "lint": "vendor/bin/phpcs --standard=ruleset.xml",
+        "unittest": "vendor/bin/phpunit --configuration ./phpunit.xml.dist --log-junit report.xml --colors=never --coverage-text",
+        "test": [
+            "@lint",
+            "@unittest"
+        ]
     }
 }
