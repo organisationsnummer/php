@@ -1,8 +1,27 @@
 {
     "name": "organisationsnummer/organisationsnummer",
+    "description": "Validate Swedish Organisationsnummer",
+    "license": "MIT",
     "require": {
         "php": ">=7.4",
         "personnummer/personnummer": ">=v3.0.4"
+    },
+    "authors": [
+        {
+            "name": "Johannes Tegnér",
+            "homepage": "https://jite.eu",
+            "email": "johannes@jitesoft.com"
+        }
+    ],
+    "keywords": [
+        "utility",
+        "organisationsnummer",
+        "personnummer",
+        "swedish",
+        "vat"
+    ],
+    "support": {
+        "issues": "https://github.com/organisationsnummer/php/issues"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
