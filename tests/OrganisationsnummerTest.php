@@ -17,7 +17,6 @@ class OrganisationsnummerTest extends TestCase {
      */
     public function testValidateOrgNumbers(string $number, bool $expected): void
     {
-
         self::assertEquals($expected, Organisationsnummer::valid($number));
     }
 
