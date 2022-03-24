@@ -25,8 +25,8 @@
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
-        "phpunit/phpunit": "^9.5",
-        "squizlabs/php_codesniffer": ">=3.6"
+        "phpunit/phpunit": "9.5.19",
+        "squizlabs/php_codesniffer": "3.6.2"
     },
     "autoload": {
         "psr-4": {
