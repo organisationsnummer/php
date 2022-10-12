@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b3df285d72050e88dd433ca0ba6af6d",
+    "content-hash": "7f568caba10ca463a59b97d20bedacfe",
     "packages": [
         {
             "name": "personnummer/personnummer",
