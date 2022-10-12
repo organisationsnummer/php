@@ -17,10 +17,10 @@ composer require organisationsnummer/organisationsnummer
 use Organisationsnummer\Organisationsnummer;
 
 Organisationsnummer::valid('202100-5489');
-//=> true
+// => true
 ```
 
-See [https://github.com/organisationsnummer/php/blob/master/tests/OrganisationsnummerTest.cs](OrganisationsnummerTest.php) for more examples.
+See [OrganisationsnummerTest.php](https://github.com/organisationsnummer/php/blob/master/tests/OrganisationsnummerTest.php) for more examples.
 
 ## License
 
