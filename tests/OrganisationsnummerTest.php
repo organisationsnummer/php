@@ -14,6 +14,7 @@ class OrganisationsnummerTest extends TestCase
      *           ["556016-0681", false]
      *           ["556103-4250", false]
      *           ["5561034250", false]
+     *           ["559244-0001", true]
      */
     public function testValidateOrgNumbers(string $number, bool $expected): void
     {
