@@ -24,7 +24,7 @@ class Organisationsnummer
         'Enskild firma', // 10
     ];
 
-    private const REGEX = '/^(\d{2}){0,1}(\d{2})(\d{2})(\d{2})([-+]?)?((?!000)\d{3})(\d)$/';
+    private const REGEX = '/^(\d{2}){0,1}(\d{2})(\d{2})(\d{2})([-+]?)?(\d{4})$/';
 
     //region static
 
