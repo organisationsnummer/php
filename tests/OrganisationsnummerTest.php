@@ -2,70 +2,114 @@
 
 namespace Organisationsnummer\Tests;
 
+use JsonException;
 use Organisationsnummer\Organisationsnummer;
+use Organisationsnummer\OrganisationsnummerException;
 use PHPUnit\Framework\TestCase;
 
 class OrganisationsnummerTest extends TestCase
 {
-    /**
-     * @testWith ["556016-0680", true]
-     *           ["556103-4249", true]
-     *           ["5561034249", true]
-     *           ["556016-0681", false]
-     *           ["556103-4250", false]
-     *           ["5561034250", false]
-     *           ["559244-0001", true]
-     */
-    public function testValidateOrgNumbers(string $number, bool $expected): void
+    /** @var array|OrgNrData[] */
+    private static ?array $data = null;
+
+    protected static function init(): void
     {
-        self::assertEquals($expected, Organisationsnummer::valid($number));
+        if (self::$data === null) {
+            $data = file_get_contents(
+                'https://raw.githubusercontent.com/organisationsnummer/meta/main/testdata/list.json'
+            );
+            self::$data = array_map(
+                static fn(array $o) => new OrgNrData($o),
+                json_decode($data, true, 5, JSON_THROW_ON_ERROR)
+            );
+        }
     }
 
     /**
-     * @testWith ["556016-0680", "5560160680"]
-     *           ["556103-4249", "5561034249"]
-     *           ["5561034249", "5561034249"]
-     *           ["901211-9948", "9012119948"]
-     *           ["9012119948", "9012119948"]
+     * @return array
      */
-    public function testFormatWithOutSeparator(string $input, string $expected): void
+    public function allProvider(): array
     {
-        self::assertEquals($expected, Organisationsnummer::parse($input)->format(false));
+        self::init();
+        return array_map(static fn(OrgNrData $o) => [$o->input => $o], self::$data);
     }
 
     /**
-     * @testWith ["556016-0680", "556016-0680"]
-     *           ["556103-4249", "556103-4249"]
-     *           ["5561034249", "556103-4249"]
-     *           ["9012119948", "901211-9948"]
-     *           ["901211-9948", "901211-9948"]
+     * @return array
      */
-    public function testFormatWithSeparator(string $input, string $expected): void
+    public function validProvider(): array
     {
-        self::assertEquals($expected, Organisationsnummer::parse($input)->format(true));
+        self::init();
+        return array_map(
+            static fn(OrgNrData $o) => [$o->input => $o],
+            array_filter(self::$data, static fn($o) => $o->valid)
+        );
     }
 
     /**
-     * @testWith ["556016-0680", "Aktiebolag"]
-     *           ["556103-4249", "Aktiebolag"]
-     *           ["5561034249", "Aktiebolag"]
-     *           ["8510033999", "Enskild firma"]
+     * @return array
      */
-    public function testGetType(string $input, string $expected): void
+    public function invalidProvider(): array
     {
-        self::assertEquals($expected, Organisationsnummer::parse($input)->type());
+        self::init();
+        return array_map(
+            static fn(OrgNrData $o) => [$o->input => $o],
+            array_filter(self::$data, static fn($o) => !$o->valid)
+        );
     }
 
     /**
-     * @testWith ["556016-0680", "SE556016068001"]
-     *           ["556103-4249", "SE556103424901"]
-     *           ["5561034249", "SE556103424901"]
-     *           ["9012119948", "SE901211994801"]
-     *           ["19901211-9948", "SE901211994801"]
+     * @dataProvider invalidProvider
      */
-    public function testGetVat(string $input, string $expected): void
+    public function testInvalidThrows(OrgNrData $input): void
     {
-        self::assertEquals($expected, Organisationsnummer::parse($input)->vatNumber());
+        $this->expectException(OrganisationsnummerException::class);
+        Organisationsnummer::parse($input->shortFormat);
+    }
+
+    /**
+     * @dataProvider allProvider
+     */
+    public function testValidateOrgNumbers(OrgNrData $input): void
+    {
+        self::assertEquals($input->valid, Organisationsnummer::valid($input->shortFormat));
+        self::assertEquals($input->valid, Organisationsnummer::valid($input->longFormat));
+    }
+
+    /**
+     * @dataProvider validProvider
+     */
+    public function testFormatWithOutSeparator(OrgNrData $input): void
+    {
+        self::assertEquals($input->shortFormat, Organisationsnummer::parse($input->shortFormat)->format(false));
+        self::assertEquals($input->shortFormat, Organisationsnummer::parse($input->longFormat)->format(false));
+    }
+
+    /**
+     * @dataProvider validProvider
+     */
+    public function testFormatWithSeparator(OrgNrData $input): void
+    {
+        self::assertEquals($input->longFormat, Organisationsnummer::parse($input->longFormat)->format(true));
+        self::assertEquals($input->longFormat, Organisationsnummer::parse($input->shortFormat)->format(true));
+    }
+
+    /**
+     * @dataProvider validProvider
+     */
+    public function testGetType(OrgNrData $input): void
+    {
+        self::assertEquals($input->type, Organisationsnummer::parse($input->longFormat)->type());
+        self::assertEquals($input->type, Organisationsnummer::parse($input->shortFormat)->type());
+    }
+
+    /**
+     * @dataProvider validProvider
+     */
+    public function testGetVat(OrgNrData $input): void
+    {
+        self::assertEquals($input->vatNumber, Organisationsnummer::parse($input->shortFormat)->vatNumber());
+        self::assertEquals($input->vatNumber, Organisationsnummer::parse($input->longFormat)->vatNumber());
     }
 
     /**
