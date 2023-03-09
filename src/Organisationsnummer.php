@@ -154,8 +154,11 @@ class Organisationsnummer
                 throw new OrganisationsnummerException();
             }
 
-            if ($matches[1] !== "" && (int)$matches[1] !== 16) {
-                throw new OrganisationsnummerException();
+            if ($matches[1] !== "") {
+                if ((int)$matches[1] !== 16) {
+                    throw new OrganisationsnummerException();
+                }
+                $input = substr($input, 2);
             }
 
             $input = str_replace(['+', '-'], ['', ''], $input);
