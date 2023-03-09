@@ -146,6 +146,11 @@ class Organisationsnummer
 
     private function innerParse(string $input): void
     {
+        $inputLength = strlen($input);
+        if ($inputLength < 10 || $inputLength > 13) {
+            throw new OrganisationsnummerException("Input value too " . ($inputLength > 13 ? "long" : "short"));
+        }
+
         try {
             $matches = [];
             preg_match(self::REGEX, $input, $matches);
