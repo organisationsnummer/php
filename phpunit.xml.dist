@@ -3,12 +3,12 @@
   <coverage/>
   <testsuites>
     <testsuite name="Organisationsnummer Test Suite">
-      <directory suffix=".php">./tests/</directory>
+      <directory>./tests/</directory>
     </testsuite>
   </testsuites>
   <source>
     <include>
-      <directory suffix=".php">./app</directory>
+      <directory suffix=".php">./src</directory>
     </include>
   </source>
 </phpunit>
