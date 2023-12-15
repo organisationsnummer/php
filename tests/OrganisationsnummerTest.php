@@ -28,7 +28,7 @@ class OrganisationsnummerTest extends TestCase
     /**
      * @return array
      */
-    public function allProvider(): array
+    public static function allProvider(): array
     {
         self::init();
         return array_map(static fn(OrgNrData $o) => [$o->input => $o], self::$data);
@@ -37,7 +37,7 @@ class OrganisationsnummerTest extends TestCase
     /**
      * @return array
      */
-    public function validProvider(): array
+    public static function validProvider(): array
     {
         self::init();
         return array_map(
@@ -49,7 +49,7 @@ class OrganisationsnummerTest extends TestCase
     /**
      * @return array
      */
-    public function invalidProvider(): array
+    public static function invalidProvider(): array
     {
         self::init();
         return array_map(
