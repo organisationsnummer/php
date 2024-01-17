@@ -4,33 +4,33 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3899fad0b16807ac1328678a4491e032",
+    "content-hash": "f7afe427188cbb1d40e02d57f22c29ac",
     "packages": [
         {
             "name": "personnummer/personnummer",
-            "version": "v3.0.4",
+            "version": "v3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/personnummer/php.git",
-                "reference": "9888574d7768c60d8ccbd1b23849ce7d530d06de"
+                "reference": "67d5438214aaa6adcfc0a56cf9c4a049fcef6e25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/personnummer/php/zipball/9888574d7768c60d8ccbd1b23849ce7d530d06de",
-                "reference": "9888574d7768c60d8ccbd1b23849ce7d530d06de",
+                "url": "https://api.github.com/repos/personnummer/php/zipball/67d5438214aaa6adcfc0a56cf9c4a049fcef6e25",
+                "reference": "67d5438214aaa6adcfc0a56cf9c4a049fcef6e25",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3"
+                "php": ">=8.1"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0.0",
                 "ext-json": "*",
                 "jchook/phpunit-assert-throws": "^1.0",
                 "phpcompatibility/php-compatibility": "^9.3",
-                "phpunit/phpunit": "^9.5",
-                "roave/security-advisories": "dev-master",
-                "squizlabs/php_codesniffer": "^3.6"
+                "phpunit/phpunit": "^10.5.5",
+                "roave/security-advisories": "dev-latest",
+                "squizlabs/php_codesniffer": "^3.8"
             },
             "type": "utility",
             "autoload": {
@@ -50,6 +50,10 @@
                 {
                     "name": "Rasmus Bengtsson",
                     "homepage": "https://github.com/rasmusbe"
+                },
+                {
+                    "name": "Johannes Tegnér",
+                    "homepage": "https://github.com/johannestegner"
                 }
             ],
             "description": "Validate Swedish social security numbers",
@@ -68,15 +72,15 @@
             ],
             "support": {
                 "issues": "https://github.com/personnummer/php/issues",
-                "source": "https://github.com/personnummer/php/tree/v3.0.4"
+                "source": "https://github.com/personnummer/php/tree/v3.0.5"
             },
             "funding": [
                 {
-                    "url": "https://opencollective.com/personnummer",
+                    "url": "https://opencollective.com/sweidproject",
                     "type": "open_collective"
                 }
             ],
-            "time": "2021-06-05T12:38:37+00:00"
+            "time": "2024-01-17T20:18:33+00:00"
         }
     ],
     "packages-dev": [
