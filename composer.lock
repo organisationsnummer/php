@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d8228fac39abb515083c358829d77cb1",
+    "content-hash": "96b52b7aa84728d38a7cb8139a84d1f2",
     "packages": [
         {
             "name": "personnummer/personnummer",
-            "version": "v3.0.5",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/personnummer/php.git",
-                "reference": "67d5438214aaa6adcfc0a56cf9c4a049fcef6e25"
+                "reference": "8c9453c18f2f28ee42e6cee5e45e106fdbe34278"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/personnummer/php/zipball/67d5438214aaa6adcfc0a56cf9c4a049fcef6e25",
-                "reference": "67d5438214aaa6adcfc0a56cf9c4a049fcef6e25",
+                "url": "https://api.github.com/repos/personnummer/php/zipball/8c9453c18f2f28ee42e6cee5e45e106fdbe34278",
+                "reference": "8c9453c18f2f28ee42e6cee5e45e106fdbe34278",
                 "shasum": ""
             },
             "require": {
@@ -72,7 +72,7 @@
             ],
             "support": {
                 "issues": "https://github.com/personnummer/php/issues",
-                "source": "https://github.com/personnummer/php/tree/v3.0.5"
+                "source": "https://github.com/personnummer/php/tree/v3.1.0"
             },
             "funding": [
                 {
@@ -80,7 +80,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-01-17T20:18:33+00:00"
+            "time": "2024-01-21T16:31:44+00:00"
         }
     ],
     "packages-dev": [
