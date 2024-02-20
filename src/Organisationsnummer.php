@@ -108,6 +108,11 @@ class Organisationsnummer
      */
     public function format(bool $separator = true): string
     {
+        if ($separator && $this->isPersonnummer()) {
+            /** @noinspection NullPointerExceptionInspection */
+            return $this->personnummer()->format(false);
+        }
+
         $number = $this->getShortString();
         return $separator ? sprintf('%s-%s', substr($number, 0, 6), substr($number, 6)) : $number;
     }
@@ -151,6 +156,7 @@ class Organisationsnummer
             throw new OrganisationsnummerException("Input value too " . ($inputLength > 13 ? "long" : "short"));
         }
 
+        $originalInput = $input;
         try {
             $matches = [];
             preg_match(self::REGEX, $input, $matches);
@@ -174,7 +180,7 @@ class Organisationsnummer
             $this->number = $input;
         } catch (Exception $ex) {
             try {
-                $this->innerPersonnummer = Personnummer::parse($input);
+                $this->innerPersonnummer = Personnummer::parse($originalInput);
             } catch (PersonnummerException $_) {
                 throw $ex;
             }
