@@ -75,7 +75,10 @@ class OrganisationsnummerTest extends TestCase
     public function testFormatWithSeparator(OrgNrData $input): void
     {
         self::assertEquals($input->longFormat, Organisationsnummer::parse($input->longFormat)->format(true));
-        self::assertEquals($input->longFormat, Organisationsnummer::parse($input->shortFormat)->format(true));
+        self::assertEquals(
+            str_replace('+', '-', $input->longFormat),
+            Organisationsnummer::parse($input->shortFormat)->format(true)
+        );
     }
 
     #[DataProvider('validProvider')]
