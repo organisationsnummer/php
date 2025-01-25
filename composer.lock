@@ -4,24 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5973be677250312897e946c195d2077b",
+    "content-hash": "e5487e3142f51f9ad6f4a546ed5f9a29",
     "packages": [
         {
             "name": "personnummer/personnummer",
-            "version": "v3.1.0",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/personnummer/php.git",
-                "reference": "8c9453c18f2f28ee42e6cee5e45e106fdbe34278"
+                "reference": "b6dee2e8796547c3810cf13304f31c84959dd219"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/personnummer/php/zipball/8c9453c18f2f28ee42e6cee5e45e106fdbe34278",
-                "reference": "8c9453c18f2f28ee42e6cee5e45e106fdbe34278",
+                "url": "https://api.github.com/repos/personnummer/php/zipball/b6dee2e8796547c3810cf13304f31c84959dd219",
+                "reference": "b6dee2e8796547c3810cf13304f31c84959dd219",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1"
+                "php": ">=8.1",
+                "psr/clock": "^1.0.0"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^1.0.0",
@@ -72,7 +73,7 @@
             ],
             "support": {
                 "issues": "https://github.com/personnummer/php/issues",
-                "source": "https://github.com/personnummer/php/tree/v3.1.0"
+                "source": "https://github.com/personnummer/php/tree/v3.2.0"
             },
             "funding": [
                 {
@@ -80,7 +81,55 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-01-21T16:31:44+00:00"
+            "time": "2025-01-14T08:09:47+00:00"
+        },
+        {
+            "name": "psr/clock",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/clock.git",
+                "reference": "e41a24703d4560fd0acb709162f73b8adfc3aa0d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/clock/zipball/e41a24703d4560fd0acb709162f73b8adfc3aa0d",
+                "reference": "e41a24703d4560fd0acb709162f73b8adfc3aa0d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0 || ^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Clock\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for reading the clock.",
+            "homepage": "https://github.com/php-fig/clock",
+            "keywords": [
+                "clock",
+                "now",
+                "psr",
+                "psr-20",
+                "time"
+            ],
+            "support": {
+                "issues": "https://github.com/php-fig/clock/issues",
+                "source": "https://github.com/php-fig/clock/tree/1.0.0"
+            },
+            "time": "2022-11-25T14:36:26+00:00"
         }
     ],
     "packages-dev": [
