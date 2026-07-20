@@ -26,7 +26,7 @@
     "require-dev": {
         "ext-json": "*",
         "roave/security-advisories": "dev-latest",
-        "phpunit/phpunit": "10.5.64",
+        "phpunit/phpunit": "13.2.4",
         "squizlabs/php_codesniffer": "4.0.1"
     },
     "autoload": {
