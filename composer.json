@@ -27,7 +27,7 @@
         "ext-json": "*",
         "roave/security-advisories": "dev-latest",
         "phpunit/phpunit": "10.5.64",
-        "squizlabs/php_codesniffer": "4.0.2"
+        "squizlabs/php_codesniffer": "4.0.4"
     },
     "autoload": {
         "psr-4": {
