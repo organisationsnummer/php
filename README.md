@@ -22,6 +22,10 @@ Organisationsnummer::valid('202100-5489');
 
 See [OrganisationsnummerTest.php](https://github.com/organisationsnummer/php/blob/main/tests/OrganisationsnummerTest.php) for more examples.
 
+## In memoriam
+
+Fredrik "Frozzare" Forsmo (1991-2026) was the initiator, co-founder and a core contributor of the organisationsnummer project. This library carries his work. He is missed.
+
 ## License
 
 MIT
