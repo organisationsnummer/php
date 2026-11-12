@@ -1,5 +1,5 @@
 # organisationsnummer
-[![Test](https://github.com/organisationsnummer/php/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/organisationsnummer/php/actions/workflows/test.yml)
+[![Test](https://github.com/organisationsnummer/php/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/organisationsnummer/php/actions/workflows/test.yml)
 
 Validate Swedish organization numbers. 
 
@@ -20,7 +20,7 @@ Organisationsnummer::valid('202100-5489');
 // => true
 ```
 
-See [OrganisationsnummerTest.php](https://github.com/organisationsnummer/php/blob/master/tests/OrganisationsnummerTest.php) for more examples.
+See [OrganisationsnummerTest.php](https://github.com/organisationsnummer/php/blob/main/tests/OrganisationsnummerTest.php) for more examples.
 
 ## License
 
