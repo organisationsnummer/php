@@ -8,6 +8,10 @@
     },
     "authors": [
         {
+            "name": "Rasmus Graham",
+            "homepage": "https://github.com/rasmusbe"
+        },
+        {
             "name": "Johannes Tegnér",
             "homepage": "https://jite.eu",
             "email": "johannes@jitesoft.com"
