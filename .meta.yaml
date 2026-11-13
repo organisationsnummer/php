@@ -1,4 +1,4 @@
 name: "PHP"
-maintainer: "@johannestegner"
+maintainer: "@rasmusbe"
 spec: 1.1
 workflow: "test.yml"
