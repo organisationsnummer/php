@@ -17,7 +17,7 @@ class OrganisationsnummerTest extends TestCase
     {
         if (self::$data === null) {
             $data = file_get_contents(
-                'https://raw.githubusercontent.com/organisationsnummer/meta/main/testdata/list.json'
+                'https://raw.githubusercontent.com/organisationsnummer/meta/HEAD/testdata/list.json'
             );
             self::$data = array_map(
                 static fn(array $o) => new OrgNrData($o),
